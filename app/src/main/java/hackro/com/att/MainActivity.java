@@ -28,8 +28,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
 
+import hackro.com.att.Activities.Main2Activity;
 import hackro.com.att.Activities.Map;
 import hackro.com.att.Activities.MenuApp;
+import hackro.com.att.DataBase.BaseManager;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -41,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        BaseManager b = new BaseManager(getApplicationContext());
+
 
         //--------------------------------------------//
         FacebookSdk.sdkInitialize(this);//El SDK necesita ser inicializado antes de usar cualquiera de sus métodos,pasando el contexto de la actividad(Activity)
@@ -71,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                                     String email = object.getString("email");//Obtenemos el mail
 
                                     //Envio de valores al Activity 2
-                                    Intent i = new Intent(getApplicationContext(), Map.class);//Enviamos al usuario a otro activity
+                                    Intent i = new Intent(getApplicationContext(), Main2Activity.class);//Enviamos al usuario a otro activity
                                     i.putExtra("foto",imgUrl.toString());
                                     i.putExtra("usuario",name);
                                     i.putExtra("email",email);

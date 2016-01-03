@@ -16,6 +16,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import hackro.com.att.DataBase.BaseManager;
 import hackro.com.att.Entities.stops;
 
 /**
@@ -24,9 +25,11 @@ import hackro.com.att.Entities.stops;
 public class WebServices {
 
     private Context context;
-    public static ArrayList<stops> Paradas = new ArrayList<stops>();
+    private BaseManager db;
     public WebServices(Context context) {//Cuando creamos la clase,podremos pasar el contexto del Activity
         this.context = context;
+
+        db = new BaseManager(context);
     }
 
     public WebServices() {
@@ -41,7 +44,6 @@ public class WebServices {
             public void onResponse(String response) {//Se es correcta OK
                 Log.e("response: ", response);//Se mostrara en la consola la cadena con los valores obtenidos
 
-                ArrayList<stops> Stops = new ArrayList<stops>();
                 try {
                     JSONObject array = new JSONObject(response);//Cadena de respuesta como parametro
 
@@ -61,12 +63,11 @@ public class WebServices {
                         stop.setLongitud(object.getString("long"));
                         stop.setLat(object.getString("lat"));
 
-                        Stops.add(stop);
+                        db.InsertPolylines(stop);
+                        Log.e("-------------",stop.toString());
                      //   Log.e("[",stop.toString());
 
-
                     }
-                    Paradas = Stops;
                     statusReport.getString("currentlyStoppedAtBusStop");
                     statusReport.getString("currentStopId");
                     statusReport.getString("routeId");
