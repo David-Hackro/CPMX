@@ -24,9 +24,9 @@ public class DBHelper extends SQLiteOpenHelper implements InterfaceValues {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(BaseManager.CreateTablePolilineas);
-        db.execSQL(BaseManager.CreateTableBuses);
         db.execSQL(BaseManager.CreateTableUsers);
-        db.close();
+        db.execSQL(BaseManager.CreateTableBuses);
+
 
     }
 
