@@ -30,7 +30,7 @@ public class Main2Activity extends AppCompatActivity {
     private long ms = 0;//milisegundos
     private long splashTime = 13000;//tiempo de duracion del splashScrenn en milisegundos
     private boolean splashActive = true;
-    static   ArrayList<LatLng> lista;
+    static ArrayList<LatLng> lista;
     ArrayList<LatLng> arraylist;
     PolylineOptions polylineOptions;
 
@@ -41,80 +41,48 @@ public class Main2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 
 
-
-        new LongOperation().execute("");
-      //  PolylineOptions options =
+        //   new LongOperation().execute("");
+        //  PolylineOptions options =
         myMap = ((SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map)).getMap();
 
 
         myMap.setMyLocationEnabled(true);
 
-         polylineOptions = new PolylineOptions();
+        polylineOptions = new PolylineOptions();
 
 
         myMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(17.547789, -99.532435)));
 
-        arraylist= new ArrayList<LatLng>();
+        arraylist = new ArrayList<LatLng>();
 
-        arraylist.add(new LatLng(17.547789, -99.532435));  // Guerrero
-        arraylist.add(new LatLng(19.1539267, -103.0220045));  // Michoacan
-        arraylist.add(new LatLng(20.6998812, -103.405454));  // Guadalajara
+        arraylist.add(new LatLng(17.547789, -99.532435));
+        arraylist.add(new LatLng(19.1539267, -103.0220045));
+        arraylist.add(new LatLng(20.6998812, -103.405454));
 
+        Handler handler = new Handler(Looper.getMainLooper());
 
+        handler = new Handler();
 
-    }
-
-
-    private class LongOperation extends AsyncTask<String, Void, String> {
-
-        @Override
-        protected String doInBackground(String... params) {
-            lista = new ArrayList<LatLng>();
-
-            Handler handler = new Handler(Looper.getMainLooper());
-            handler.post(new Runnable(){
-                @Override
-                public void run() {
-
-
-
-
-                    for (LatLng ll : arraylist)
-                    {
-                        polylineOptions.add(ll);
-
-                    }
-
-
-
-
-                        myMap.addPolyline(polylineOptions);
-
-
-                // your UI code here
+        final Handler finalHandler = handler;
+        final Runnable r = new Runnable() {
+            public void run() {
+                Pinta();
+                finalHandler.postDelayed(this, 1000);
             }
+        };
 
+        handler.postDelayed(r, 3000);
 
-            });
-
-            return "Executed";
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-
-            // myMap.clear();
-
-        }
-
-        @Override
-        protected void onPreExecute() {}
-
-        @Override
-        protected void onProgressUpdate(Void... values) {}
     }
 
+public void Pinta()
+{
+    for (LatLng ll : arraylist) {
+        polylineOptions.add(ll);
+        myMap.addPolyline(polylineOptions);
+    }
+}
 
 }
 
