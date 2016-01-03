@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         callbackManager = CallbackManager.Factory.create();//inizializamos el CallbackManager
         //---------------------------------------------//
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
 
         loginButton = (LoginButton) findViewById(R.id.login_button);
         //--------------------------------------------------//
