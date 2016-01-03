@@ -40,9 +40,11 @@ public class Main2Activity extends AppCompatActivity {
     private boolean splashActive = true;
     static ArrayList<LatLng> lista;
     ArrayList<LatLng> arraylist;
+    ArrayList<String> arraylistStations;
+
     PolylineOptions polylineOptions;
     private BaseManager db;
-
+    private WebServices ws;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,7 @@ public class Main2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         db = new BaseManager(getApplicationContext());
 
+        ws = new WebServices(getApplicationContext());
         //   new LongOperation().execute("");
         //  PolylineOptions options =
         myMap = ((SupportMapFragment) getSupportFragmentManager()
@@ -60,103 +63,114 @@ public class Main2Activity extends AppCompatActivity {
         myMap.setMyLocationEnabled(true);
 
 
-
-
-
-
-        polylineOptions = new PolylineOptions().width(2).color(Color.RED).geodesic(true);
+        polylineOptions = new PolylineOptions().width(5).color(Color.RED).geodesic(true);
 
 
         // myMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(20.6766031, -103.4182771)));
-        myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(20.6653001,-103.3950384), 12.0f));
+        myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(20.6653001, -103.3950384), 16.0f));
 
         MarkerOptions options = new MarkerOptions();
-        options.anchor(10,10);
+        options.anchor(10, 10);
 
 
         arraylist = new ArrayList<LatLng>();
 
-
+/*
         Cursor cursor = db.GetAllDatesPolylines();
         Cursor c = cursor;
         String[] data;
         if (c != null) {//mientras el cursor sea distinto a null
             while (c.moveToNext()) {
-             //       arraylist.add(new LatLng(Float.valueOf(c.getString(6)),Float.valueOf(c.getString(7))));
-                Log.e("Resultados:: ", c.getString(6) + " / " + c.getString(7));//Obtener cada campo de la tabla,en posicion y tipo de dato
+                    arraylist.add(new LatLng(Float.valueOf(c.getString(6)),Float.valueOf(c.getString(7))));
+              //  Log.e("Resultados:: ", c.getString(6) + " / " + c.getString(7));//Obtener cada campo de la tabla,en posicion y tipo de dato
             }
             c.close();
         }
+*/
 
 
+        arraylist.add(new LatLng(20.6653001, -103.3950384));
+        arraylist.add(new LatLng(20.6653453, -103.3948668));
+        arraylist.add(new LatLng(20.665147, -103.3943893));
+        arraylist.add(new LatLng(20.665147, -103.3943893));
+        arraylist.add(new LatLng(20.6646426, -103.3942874));
+        arraylist.add(new LatLng(20.6646426, -103.3942874));
+        arraylist.add(new LatLng(20.6618418, -103.3959611));
+        arraylist.add(new LatLng(20.6618418, -103.3959611));
+        arraylist.add(new LatLng(20.6618418, -103.3959611));
+        arraylist.add(new LatLng(20.6586996, -103.3982785));
+        arraylist.add(new LatLng(20.6586996, -103.3982785));
+        arraylist.add(new LatLng(20.6586996, -103.3982785));
+        arraylist.add(new LatLng(20.6586996, -103.3982785));
+        arraylist.add(new LatLng(20.6586996, -103.3982785));
+        arraylist.add(new LatLng(20.6586996, -103.3982785));
+        arraylist.add(new LatLng(20.6586996, -103.3982785));
+        arraylist.add(new LatLng(20.6582981, -103.3955105));
+        arraylist.add(new LatLng(20.6582981, -103.3955105));
+        arraylist.add(new LatLng(20.6568224, -103.3948668));
+        arraylist.add(new LatLng(20.6562401, -103.394105));
+        arraylist.add(new LatLng(20.6562401, -103.394105));
+        arraylist.add(new LatLng(20.6562401, -103.394105));
+        arraylist.add(new LatLng(20.6562401, -103.394105));
+        arraylist.add(new LatLng(20.6562401, -103.394105));
+        arraylist.add(new LatLng(20.6551659, -103.3945235));
+        //  arraylist.add(new LatLng(19.1539267, -103.0220045));
+        //   arraylist.add(new LatLng(20.6998812, -103.405454));
 
+        if (arraylist.size() > 0) {
 
-        arraylist.add(new LatLng(20.6653001,-103.3950384));
-        arraylist.add(new LatLng(20.6653453,-103.3948668));
-        arraylist.add(new LatLng(20.665147,-103.3943893));
-        arraylist.add(new LatLng(20.665147,-103.3943893));
-        arraylist.add(new LatLng(20.6646426,-103.3942874));
-        arraylist.add(new LatLng(20.6646426,-103.3942874));
-        arraylist.add(new LatLng(20.6618418,-103.3959611));
-        arraylist.add(new LatLng(20.6618418,-103.3959611));
-        arraylist.add(new LatLng(20.6618418,-103.3959611));
-        arraylist.add(new LatLng(20.6586996,-103.3982785));
-        arraylist.add(new LatLng(20.6586996,-103.3982785));
-        arraylist.add(new LatLng(20.6586996,-103.3982785));
-        arraylist.add(new LatLng(20.6586996,-103.3982785));
-        arraylist.add(new LatLng(20.6586996,-103.3982785));
-        arraylist.add(new LatLng(20.6586996,-103.3982785));
-        arraylist.add(new LatLng(20.6586996,-103.3982785));
-        arraylist.add(new LatLng(20.6582981,-103.3955105));
-        arraylist.add(new LatLng(20.6582981,-103.3955105));
-        arraylist.add(new LatLng(20.6568224,-103.3948668));
-        arraylist.add(new LatLng(20.6562401,-103.394105));
-        arraylist.add(new LatLng(20.6562401,-103.394105));
-        arraylist.add(new LatLng(20.6562401,-103.394105));
-        arraylist.add(new LatLng(20.6562401,-103.394105));
-        arraylist.add(new LatLng(20.6562401,-103.394105));
-        arraylist.add(new LatLng(20.6551659,-103.3945235));
-      //  arraylist.add(new LatLng(19.1539267, -103.0220045));
-     //   arraylist.add(new LatLng(20.6998812, -103.405454));
+            for (LatLng ll : arraylist) {
+                polylineOptions.add(ll);
+                //MarkerOptions markerOptions = new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.mipmap.user));
+                myMap.addPolyline(polylineOptions);
+                MarkerOptions marker = new MarkerOptions().position(ll).title("Stop Bus");
 
+                marker.icon(BitmapDescriptorFactory.fromResource(R.mipmap.station));
 
+                myMap.addMarker(marker);
+                ws.getLocalizacionRuta("");
 
-
-        //Hilo principal
-
-        Handler handler = new Handler(Looper.getMainLooper());
-
-        handler = new Handler();
-
-        final Handler finalHandler = handler;
-        final Runnable r = new Runnable() {
-            int i = 0;
-            public void run() {
-                Pinta(i);
-                finalHandler.postDelayed(this, 500);
-                i++;
+                //myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(arraylist.get(i), 16.0f));
             }
-        };
 
-        handler.postDelayed(r, 1000);
+            //Hilo principal
 
+
+            Handler handler = new Handler(Looper.getMainLooper());
+
+            handler = new Handler();
+            polylineOptions = new PolylineOptions().width(1).color(Color.BLUE).geodesic(true);
+
+            final Handler finalHandler = handler;
+            final Runnable r = new Runnable() {
+                int i = 0;
+
+                public void run() {
+                    Pinta(i);
+                    finalHandler.postDelayed(this, 500);
+                    i++;
+                }
+            };
+
+            handler.postDelayed(r, 1000);
+
+        }
     }
 
 public void Pinta(int i)
 {
     if(arraylist.size()> i){
-        polylineOptions.add(arraylist.get(i));
-        myMap.addPolyline(polylineOptions);
+
+
+           polylineOptions.add(arraylist.get(i));
+        //MarkerOptions markerOptions = new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.mipmap.user));
+       myMap.addPolyline(polylineOptions);
+
+     //   ws.getLocalizacionRuta("");
+
+        //myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(arraylist.get(i), 16.0f));
     }
 
-   /* int tamaño arraylist.size();
-    for (LatLng ll : arraylist) {
-        polylineOptions.add(ll);
-        myMap.addPolyline(polylineOptions);
-    }*/
 }
-
-
-
 }
 

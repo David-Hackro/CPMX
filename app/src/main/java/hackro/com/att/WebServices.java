@@ -2,6 +2,7 @@ package hackro.com.att;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -45,7 +46,6 @@ public class WebServices {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {//Hacemos la peticion
             @Override
             public void onResponse(String response) {//Se es correcta OK
-                Log.e("response: ", response);//Se mostrara en la consola la cadena con los valores obtenidos
 
                 try {
                     JSONObject array = new JSONObject(response);//Cadena de respuesta como parametro
@@ -65,14 +65,11 @@ public class WebServices {
                         stop.setLoad(String.valueOf(object.getInt("load")));
                         stop.setLongitud(object.getString("long"));
                         stop.setLat(object.getString("lat"));
-                        Log.e("---------d----",stop.toString());
                         db.InsertPolylines(stop);
 
 
-                     //   Log.e("[",stop.toString());
 
                     }
-
                     statusReport.getString("currentlyStoppedAtBusStop");
                     statusReport.getString("currentStopId");
                     statusReport.getString("routeId");
@@ -114,9 +111,11 @@ public class WebServices {
                 try {
                     JSONObject jsonObject = new JSONObject(response);//Cadena de respuesta como parametro
 
+                  String lat =  jsonObject.getString("latitud");
+                    String lon =    jsonObject.getString("longitude");
 
-
-
+                    Log.e("["+lat+"]","["+lon+"]");
+                    Toast.makeText(context,lat+" "+lon, Toast.LENGTH_SHORT).show();
 
                     } catch (JSONException e1) {
                     e1.printStackTrace();
