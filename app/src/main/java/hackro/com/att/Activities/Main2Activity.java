@@ -68,7 +68,7 @@ public class Main2Activity extends AppCompatActivity {
 
 
         // myMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(20.6766031, -103.4182771)));
-        myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(20.6653001,-103.3950384), 10.0f));
+        myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(20.6653001,-103.3950384), 12.0f));
 
         MarkerOptions options = new MarkerOptions();
         options.anchor(10,10);
@@ -133,7 +133,7 @@ public class Main2Activity extends AppCompatActivity {
             int i = 0;
             public void run() {
                 Pinta(i);
-                finalHandler.postDelayed(this, 1000);
+                finalHandler.postDelayed(this, 500);
                 i++;
             }
         };
