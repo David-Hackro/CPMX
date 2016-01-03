@@ -31,6 +31,8 @@ public class Main2Activity extends AppCompatActivity {
     private long splashTime = 13000;//tiempo de duracion del splashScrenn en milisegundos
     private boolean splashActive = true;
     static   ArrayList<LatLng> lista;
+    ArrayList<LatLng> arraylist;
+    PolylineOptions polylineOptions;
 
 
     @Override
@@ -40,10 +42,26 @@ public class Main2Activity extends AppCompatActivity {
 
 
 
-
-
         new LongOperation().execute("");
-      //  PolylineOptions options = new PolylineOptions().width(5).color(Color.BLUE).geodesic(true);
+      //  PolylineOptions options =
+        myMap = ((SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map)).getMap();
+
+
+        myMap.setMyLocationEnabled(true);
+
+         polylineOptions = new PolylineOptions();
+
+
+        myMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(17.547789, -99.532435)));
+
+        arraylist= new ArrayList<LatLng>();
+
+        arraylist.add(new LatLng(17.547789, -99.532435));  // Guerrero
+        arraylist.add(new LatLng(19.1539267, -103.0220045));  // Michoacan
+        arraylist.add(new LatLng(20.6998812, -103.405454));  // Guadalajara
+
+
 
     }
 
@@ -58,43 +76,22 @@ public class Main2Activity extends AppCompatActivity {
             handler.post(new Runnable(){
                 @Override
                 public void run() {
-                    myMap = ((SupportMapFragment) getSupportFragmentManager()
-                            .findFragmentById(R.id.map)).getMap();
 
 
-                    myMap.setMyLocationEnabled(true);
-
-                    final PolylineOptions polylineOptions = new PolylineOptions();
-
-      /*  myMap.addPolyline(new PolylineOptions().geodesic(true)
-                .add(new LatLng(17.547789, -99.532435))  // Guerrero
-                .add(new LatLng(19.1539267, -103.0220045))  // Michoacan
-                .add(new LatLng(20.6998812, -103.405454)));  // Guadalajara*/
 
 
-                    myMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(17.547789, -99.532435)));
-                    lista.add(new LatLng(17.547789, -99.532435));
-                    for (int i = 0; i < 5; i++) {
-                        try {
-                            //    LatLng point = list.get(z);
-                                float f = (float) (17.547789 + 100f);
-                            LatLng point = new LatLng(f, -99.532435);
-                            lista.add(point);
-                            myMap.clear();
-                            for (LatLng a :lista ){
-                                Log.e("d","-------------------------------------------------------");
-                                Log.e("d",a.toString());
+                    for (LatLng ll : arraylist)
+                    {
+                        polylineOptions.add(ll);
 
-                                myMap.addPolyline(new PolylineOptions().geodesic(true)
-                                        .add(a));
-                            }
+                    }
 
 
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            Thread.interrupted();
-                        }
-                }
+
+
+                        myMap.addPolyline(polylineOptions);
+
+
                 // your UI code here
             }
 
