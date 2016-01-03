@@ -24,7 +24,10 @@ public class BaseManager implements InterfaceValues, IMethods {
 
     public BaseManager(Context context) {
         dbHelper = new DBHelper(context);
+
         db = dbHelper.getWritableDatabase();//Creation of DB
+
+        //   db = dbHelper.getWritableDatabase();//Creation of DB
     }
 
 
@@ -43,7 +46,7 @@ public class BaseManager implements InterfaceValues, IMethods {
 
 
     public static final String CreateTablePolilineas =
-            "create table Polylines (" +
+            "create table Polilineas (" +
                     "" + Polylines1 + " text not null," +
                     "" + Polylines2 + " text not null," +
                     "" + Polylines3 + " text not null," +
@@ -68,22 +71,23 @@ public class BaseManager implements InterfaceValues, IMethods {
 
     @Override
     public boolean InsertUser(User user) {
+
         db.insert(TABLE_NAME_User, null, GenerateContentValueUser(user));
-        db.close();
+     //   db.close();
         return false;
     }
 
     @Override
     public boolean UpdateUser(User user) {
         db.insert(TABLE_NAME_User, null, GenerateContentValueUser(user));
-        db.close();
+    //    db.close();
         return false;
     }
 
     @Override
     public boolean DeleteUser(User user) {
         db.delete(TABLE_NAME_User, User2 + "=?", new String[]{user.getEmail()});
-        db.close();
+    ///    db.close();
         return false;
     }
 
@@ -91,7 +95,10 @@ public class BaseManager implements InterfaceValues, IMethods {
     public Cursor GetAllDatesUser(String user) {
         String[] columnas = new String[]{User1, User2, User3, User4};
         String[] args = new String[]{user};
-        return db.query(TABLE_NAME_User, columnas, User1, args, null, null, null);//OCupamos nuevamente un metodo de ContentValues,pasando como parametro el nombre de la tabla y el arreglo de campos
+        Cursor c = db.query(TABLE_NAME_User, columnas, User1, args, null, null, null);//OCupamos nuevamente un metodo de ContentValues,pasando como parametro el nombre de la tabla y el arreglo de campos
+    //    db.close();
+
+        return c;
     }
 
     @Override
@@ -114,24 +121,25 @@ public class BaseManager implements InterfaceValues, IMethods {
 
     @Override
     public boolean InsertPolylines(stops stops) {
-        db.insert(TABLE_NAME_P, null, GenerateContentValuePolylines(stops));
-        db.close();
+        db.insert("Polilineas", null, GenerateContentValuePolylines(stops));
+        //db.close();
         return false;
     }
 
     @Override
     public boolean DeletePolylines() {
         db.delete(TABLE_NAME_P, null, null);
-        db.close();
+       // db.close();
         return false;
     }
 
     @Override
     public Cursor GetAllDatesPolylines() {
 
-        String[] columnas = new String[]{Polylines1, Polylines2, Polylines3, Polylines4, Polylines5, Polylines6, Polylines7, Polylines8};//En un arreglo colocamos los campos
-        Cursor c = db.query(TABLE_NAME_P, columnas, null, null, null, null, null);//OCupamos nuevamente un metodo de ContentValues,pasando como parametro el nombre de la tabla y el arreglo de campos
-        db.close();
+   //     String[] columnas = new String[]{Polylines1, Polylines2, Polylines3, Polylines4, Polylines5, Polylines6, Polylines7, Polylines8};//En un arreglo colocamos los campos
+    //    Cursor c = db.query(TABLE_NAME_P, columnas, null, null, null, null, null);//OCupamos nuevamente un metodo de ContentValues,pasando como parametro el nombre de la tabla y el arreglo de campos
+     //   db.close();
+        Cursor c = null;
         return c;
     }
 

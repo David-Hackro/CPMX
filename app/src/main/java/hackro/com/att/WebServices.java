@@ -26,6 +26,8 @@ public class WebServices {
 
     private Context context;
     private BaseManager db;
+
+
     public WebServices(Context context) {//Cuando creamos la clase,podremos pasar el contexto del Activity
         this.context = context;
 
@@ -48,13 +50,13 @@ public class WebServices {
                     JSONObject array = new JSONObject(response);//Cadena de respuesta como parametro
 
                     JSONObject statusReport = array.getJSONObject("statusReport");
-
+                    stops stop;
                     JSONArray arrayStops = new JSONArray(statusReport.getString("stops"));
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject object = arrayStops.getJSONObject(i);
 
-                        stops stop = new stops();
-                       stop.setStopName( object.getString("stopName"));
+                        stop = new stops();
+                        stop.setStopName( object.getString("stopName"));
                         stop.setShelter(object.getString("shelter"));
                         stop.setBench(object.getString("bench"));
                         stop.setStopId(object.getString("stopId"));
@@ -62,12 +64,14 @@ public class WebServices {
                         stop.setLoad(String.valueOf(object.getInt("load")));
                         stop.setLongitud(object.getString("long"));
                         stop.setLat(object.getString("lat"));
-
+                        Log.e("---------d----",stop.toString());
                         db.InsertPolylines(stop);
-                        Log.e("-------------",stop.toString());
+
+
                      //   Log.e("[",stop.toString());
 
                     }
+
                     statusReport.getString("currentlyStoppedAtBusStop");
                     statusReport.getString("currentStopId");
                     statusReport.getString("routeId");

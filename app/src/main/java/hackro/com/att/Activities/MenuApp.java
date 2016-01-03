@@ -1,5 +1,6 @@
 package hackro.com.att.Activities;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
@@ -57,7 +58,7 @@ public class MenuApp extends AppCompatActivity {
         ws.QueryGet("");
 
 
-
+            startActivity(new Intent(this,Main2Activity.class));
 
 
 

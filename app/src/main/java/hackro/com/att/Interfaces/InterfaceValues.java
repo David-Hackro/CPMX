@@ -13,7 +13,7 @@ public interface InterfaceValues {
     public static final String TABLE_NAME_P ="Polilineas";//Nombre de la tabla Users
 
 
-    public static final String Bus1 ="_id_User";
+    public static final String Bus1 ="_id_Bus";
     public static final String Bus2 ="paradas";
     public static final String Bus3 ="bus";
 

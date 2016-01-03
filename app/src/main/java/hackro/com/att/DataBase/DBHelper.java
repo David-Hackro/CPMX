@@ -26,7 +26,7 @@ public class DBHelper extends SQLiteOpenHelper implements InterfaceValues {
         db.execSQL(BaseManager.CreateTablePolilineas);
         db.execSQL(BaseManager.CreateTableBuses);
         db.execSQL(BaseManager.CreateTableUsers);
-
+        db.close();
 
     }
 
