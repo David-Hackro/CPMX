@@ -17,6 +17,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import hackro.com.att.DataBase.BaseManager;
+import hackro.com.att.Entities.statusReport;
 import hackro.com.att.Entities.stops;
 
 /**
@@ -40,7 +41,7 @@ public class WebServices {
 
     public void getRuta(final String title) {//Pasamos los parametros
         final RequestQueue queue = Volley.newRequestQueue(context);//Creamos instancia de RequestQueue con el contexto como parametro
-        String url = "http://172.18.97.248:1337/ruta/getRuta";//Colocamos la URL,concatenando el parametro
+        String url = "https://bussattapp.herokuapp.com/ruta/getRuta";//Colocamos la URL,concatenando el parametro
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {//Hacemos la peticion
             @Override
             public void onResponse(String response) {//Se es correcta OK
@@ -104,55 +105,24 @@ public class WebServices {
 
     public void getLocalizacionRuta(final String vim) {//Pasamos los parametros
         final RequestQueue queue = Volley.newRequestQueue(context);//Creamos instancia de RequestQueue con el contexto como parametro
-        String url = "http://172.18.97.248:1337/ruta/getUbicacion";//Colocamos la URL,concatenando el parametro
+        String url = "https://bussattapp.herokuapp.com/ruta/getUbicacion";//Colocamos la URL,concatenando el parametro
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {//Hacemos la peticion
             @Override
             public void onResponse(String response) {//Se es correcta OK
                 Log.e("response: ", response);//Se mostrara en la consola la cadena con los valores obtenidos
 
                 try {
-                    JSONObject array = new JSONObject(response);//Cadena de respuesta como parametro
-
-                    JSONObject statusReport = array.getJSONObject("statusReport");
-                    stops stop;
-                    JSONArray arrayStops = new JSONArray(statusReport.getString("stops"));
-                    for (int i = 0; i < array.length(); i++) {
-                        JSONObject object = arrayStops.getJSONObject(i);
-
-                        stop = new stops();
-                        stop.setStopName( object.getString("stopName"));
-                        stop.setShelter(object.getString("shelter"));
-                        stop.setBench(object.getString("bench"));
-                        stop.setStopId(object.getString("stopId"));
-                        stop.setOdom(object.getString("odom"));
-                        stop.setLoad(String.valueOf(object.getInt("load")));
-                        stop.setLongitud(object.getString("long"));
-                        stop.setLat(object.getString("lat"));
-                        Log.e("---------d----",stop.toString());
-                        db.InsertPolylines(stop);
-
-
-                        //   Log.e("[",stop.toString());
-
-                    }
-
-                    statusReport.getString("currentlyStoppedAtBusStop");
-                    statusReport.getString("currentStopId");
-                    statusReport.getString("routeId");
-                    statusReport.getString("requestTime");
-                    statusReport.getString("status");
-                    statusReport.getString("requestType");
+                    JSONObject jsonObject = new JSONObject(response);//Cadena de respuesta como parametro
 
 
 
-                    //array.getJSONArray("")
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
+
+                    } catch (JSONException e1) {
+                    e1.printStackTrace();
                 }
-
-
             }
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
