@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">ATT</string>
     <string name="facebook_app_id">1647930978807654</string>
+
+    <string-array name="municipios_arrays">
+
+        <item>Ruta Azul</item>
+        <item>Ruta Amarilla</item>
+        <item>Ruta Verde</item>
+        <item>Ruta Roja</item>
+        <item>Ruta Cafe</item>
+    </string-array>
 </resources>

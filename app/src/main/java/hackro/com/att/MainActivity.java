@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                                     String email = object.getString("email");//Obtenemos el mail
 
                                     //Envio de valores al Activity 2
-                                    Intent i = new Intent(getApplicationContext(), Main2Activity.class);//Enviamos al usuario a otro activity
+                                    Intent i = new Intent(getApplicationContext(), Map.class);//Enviamos al usuario a otro activity
                                     i.putExtra("foto",imgUrl.toString());
                                     i.putExtra("usuario",name);
                                     i.putExtra("email",email);

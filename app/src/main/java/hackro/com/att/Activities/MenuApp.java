@@ -55,7 +55,7 @@ public class MenuApp extends AppCompatActivity {
         Profile.setImageBitmap(bitmap);
 
         WebServices ws = new WebServices(getApplicationContext());
-        ws.QueryGet("");
+        ws.getRuta("");
 
 
             startActivity(new Intent(this,Main2Activity.class));

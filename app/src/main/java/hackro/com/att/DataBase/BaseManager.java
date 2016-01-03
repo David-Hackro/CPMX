@@ -17,6 +17,7 @@ import hackro.com.att.Interfaces.InterfaceValues;
  * Created by hackro on 2/01/16.
  */
 public class BaseManager implements InterfaceValues, IMethods {
+    public static final String TABLE_NAME_P ="Polilineas";//Nombre de la tabla Users
 
 
     private DBHelper dbHelper;
@@ -136,10 +137,9 @@ public class BaseManager implements InterfaceValues, IMethods {
     @Override
     public Cursor GetAllDatesPolylines() {
 
-   //     String[] columnas = new String[]{Polylines1, Polylines2, Polylines3, Polylines4, Polylines5, Polylines6, Polylines7, Polylines8};//En un arreglo colocamos los campos
-    //    Cursor c = db.query(TABLE_NAME_P, columnas, null, null, null, null, null);//OCupamos nuevamente un metodo de ContentValues,pasando como parametro el nombre de la tabla y el arreglo de campos
+        String[] columnas = new String[]{Polylines1, Polylines2, Polylines3, Polylines4, Polylines5, Polylines6, Polylines7, Polylines8};//En un arreglo colocamos los campos
+        Cursor c = db.query(TABLE_NAME_P, columnas, null, null, null, null, null);//OCupamos nuevamente un metodo de ContentValues,pasando como parametro el nombre de la tabla y el arreglo de campos
      //   db.close();
-        Cursor c = null;
         return c;
     }
 

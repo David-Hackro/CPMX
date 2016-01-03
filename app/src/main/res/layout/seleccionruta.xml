@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/estilo_dialogo"
+    android:layout_margin="5dp" >
+
+    <RelativeLayout
+        android:id="@+id/pnlEncabezado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null" >
+
+        <TextView
+            android:id="@+id/txvTituloRecuperarContrasenia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Busca Ruta"
+            android:textSize="20sp"
+            android:typeface="normal"
+            android:padding="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorFuente" />
+
+        <View
+            android:id="@+id/vSeparador"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_below="@+id/txvTituloRecuperarContrasenia"
+            android:layout_marginLeft="4dip"
+            android:layout_marginRight="4dip"
+            android:alpha=".45"
+            android:background="@null" />
+
+        <TextView
+            android:id="@+id/txvAviso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/vSeparador"
+            android:gravity="center|left"
+            android:singleLine="false"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="10dp"
+            android:text="Busca Ruta"
+            android:textColor="@color/colorFuente" />
+
+        <EditText
+            android:id="@+id/edtCorreoElectronico"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/vSeparador"
+            android:layout_alignRight="@+id/vSeparador"
+            android:layout_below="@+id/txvAviso"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:textColorHint="@color/colorFuente"
+            android:background="@drawable/edittext_redondo"
+            android:drawableLeft="@mipmap/minibus"
+            android:ems="10"
+            android:drawablePadding="10dp"
+            android:hint="RUTA" />
+
+        <Button
+            android:id="@+id/btnEnviar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/edtCorreoElectronico"
+            android:layout_alignRight="@+id/edtCorreoElectronico"
+            android:layout_below="@+id/edtCorreoElectronico"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="25dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:background="@drawable/estilo_redondoboton"
+            android:textColor="@color/colorFuente"
+            android:text="Buscar" />
+
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Rutas"
+            android:entries="@array/municipios_arrays"
+            android:spinnerMode="dialog"
+            android:layout_centerHorizontal="true"
+            android:paddingBottom="20dp"
+            android:visibility="gone"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>

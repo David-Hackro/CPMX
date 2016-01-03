@@ -52,14 +52,14 @@ public class Main2Activity extends AppCompatActivity {
         myMap = ((SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map)).getMap();
         WebServices ws = new WebServices(getApplicationContext());
-        ws.QueryGet("");
+        ws.getRuta("");
 
         myMap.setMyLocationEnabled(true);
 
         polylineOptions = new PolylineOptions();
 
        // myMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(20.6766031, -103.4182771)));
-        myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(20.6766031, -103.4182771), 12.0f));
+        myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(36.265452, -115.153), 12.0f));
 
         MarkerOptions options = new MarkerOptions();
         options.anchor(10,10);
@@ -67,22 +67,22 @@ public class Main2Activity extends AppCompatActivity {
 
         arraylist = new ArrayList<LatLng>();
 
-/*
+
         Cursor cursor = db.GetAllDatesPolylines();
         Cursor c = cursor;
         String[] data;
         if (c != null) {//mientras el cursor sea distinto a null
             while (c.moveToNext()) {
                 arraylist.add(new LatLng(Float.valueOf(c.getString(6)),Float.valueOf(c.getString(7))));
-              //  Log.e("Resultados:: ", c.getString(6) + " / " + c.getString(7));//Obtener cada campo de la tabla,en posicion y tipo de dato
+                Log.e("Resultados:: ", c.getString(6) + " / " + c.getString(7));//Obtener cada campo de la tabla,en posicion y tipo de dato
             }
             c.close();
         }
 
-*/
 
 
-        arraylist.add(new LatLng(20.6766031,-103.4182771));
+
+        /*arraylist.add(new LatLng(20.6766031,-103.4182771));
         arraylist.add(new LatLng(20.6766031,-103.4182771));
         arraylist.add(new LatLng(20.6766031,-103.4182771));
         arraylist.add(new LatLng(20.6766031,-103.4182771));
@@ -98,7 +98,7 @@ public class Main2Activity extends AppCompatActivity {
         arraylist.add(new LatLng(20.6651696,-103.3940836));
         arraylist.add(new LatLng(20.6617967,-103.3867773));
         arraylist.add(new LatLng(20.6582329,-103.3815201));
-        arraylist.add(new LatLng(20.6565262,-103.3771642));
+        arraylist.add(new LatLng(20.6565262,-103.3771642));*/
       //  arraylist.add(new LatLng(19.1539267, -103.0220045));
      //   arraylist.add(new LatLng(20.6998812, -103.405454));
 
