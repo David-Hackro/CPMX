@@ -47,23 +47,19 @@
             android:text="Busca Ruta"
             android:textColor="@color/colorFuente" />
 
-        <EditText
-            android:id="@+id/edtCorreoElectronico"
-            android:layout_width="wrap_content"
+
+
+        <Spinner
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/vSeparador"
-            android:layout_alignRight="@+id/vSeparador"
+            android:id="@+id/edtCorreoElectronico"
+            android:entries="@array/municipios_arrays"
+            android:spinnerMode="dialog"
             android:layout_below="@+id/txvAviso"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:textColorHint="@color/colorFuente"
-            android:background="@drawable/edittext_redondo"
-            android:drawableLeft="@mipmap/minibus"
-            android:ems="10"
-            android:drawablePadding="10dp"
-            android:hint="RUTA" />
+            android:paddingBottom="20dp"
+
+            />
+
 
         <Button
             android:id="@+id/btnEnviar"
