@@ -1,3 +1,4 @@
+
 package hackro.com.att.Activities;
 
 import android.database.Cursor;
@@ -40,6 +41,7 @@ public class Main2Activity extends AppCompatActivity {
     private boolean splashActive = true;
     static ArrayList<LatLng> lista;
     ArrayList<LatLng> arraylist;
+    ArrayList<String > arraylistSation;
     ArrayList<String> arraylistStations;
 
     PolylineOptions polylineOptions;
@@ -74,19 +76,21 @@ public class Main2Activity extends AppCompatActivity {
 
 
         arraylist = new ArrayList<LatLng>();
+        arraylistSation = new ArrayList<String>();
 
-/*
+
         Cursor cursor = db.GetAllDatesPolylines();
         Cursor c = cursor;
         String[] data;
         if (c != null) {//mientras el cursor sea distinto a null
             while (c.moveToNext()) {
-                    arraylist.add(new LatLng(Float.valueOf(c.getString(6)),Float.valueOf(c.getString(7))));
+                  //  arraylist.add(new LatLng(Float.valueOf(c.getString(6)),Float.valueOf(c.getString(7))));
+                arraylistSation.add(c.getString(0));
               //  Log.e("Resultados:: ", c.getString(6) + " / " + c.getString(7));//Obtener cada campo de la tabla,en posicion y tipo de dato
             }
             c.close();
         }
-*/
+
 
 
         arraylist.add(new LatLng(20.6653001, -103.3950384));
@@ -116,20 +120,19 @@ public class Main2Activity extends AppCompatActivity {
         arraylist.add(new LatLng(20.6551659, -103.3945235));
         //  arraylist.add(new LatLng(19.1539267, -103.0220045));
         //   arraylist.add(new LatLng(20.6998812, -103.405454));
-
-        if (arraylist.size() > 0) {
+int  i = 0;
 
             for (LatLng ll : arraylist) {
                 polylineOptions.add(ll);
                 //MarkerOptions markerOptions = new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.mipmap.user));
-                myMap.addPolyline(polylineOptions);
-                MarkerOptions marker = new MarkerOptions().position(ll).title("Stop Bus");
+              //  myMap.addPolyline(polylineOptions);
+                MarkerOptions marker = new MarkerOptions().position(ll).title(arraylistSation.get(i));
 
                 marker.icon(BitmapDescriptorFactory.fromResource(R.mipmap.station));
 
                 myMap.addMarker(marker);
                 ws.getLocalizacionRuta("");
-
+                i++;
                 //myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(arraylist.get(i), 16.0f));
             }
 
@@ -154,23 +157,22 @@ public class Main2Activity extends AppCompatActivity {
 
             handler.postDelayed(r, 1000);
 
+
+    }
+
+    public void Pinta(int i)
+    {
+        if(arraylist.size()> i){
+
+
+            polylineOptions.add(arraylist.get(i));
+            //MarkerOptions markerOptions = new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.mipmap.user));
+            myMap.addPolyline(polylineOptions);
+
+            //   ws.getLocalizacionRuta("");
+
+            //myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(arraylist.get(i), 16.0f));
         }
+
     }
-
-public void Pinta(int i)
-{
-    if(arraylist.size()> i){
-
-
-           polylineOptions.add(arraylist.get(i));
-        //MarkerOptions markerOptions = new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.mipmap.user));
-       myMap.addPolyline(polylineOptions);
-
-     //   ws.getLocalizacionRuta("");
-
-        //myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(arraylist.get(i), 16.0f));
-    }
-
 }
-}
-

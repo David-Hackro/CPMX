@@ -26,6 +26,8 @@ dependencies {
     compile 'com.facebook.android:facebook-android-sdk:4.7.0'
     compile 'com.mcxiaoke.volley:library:1.0.19'
     compile 'com.google.android.gms:play-services:8.1.0'//Agregamos la dependencia de google play services
+    compile 'com.melnykov:floatingactionbutton:1.3.0'
+
 
 
 }

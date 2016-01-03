@@ -106,7 +106,7 @@ public class WebServices {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {//Hacemos la peticion
             @Override
             public void onResponse(String response) {//Se es correcta OK
-                Log.e("response: ", response);//Se mostrara en la consola la cadena con los valores obtenidos
+               // Log.e("response: ", response);//Se mostrara en la consola la cadena con los valores obtenidos
 
                 try {
                     JSONObject jsonObject = new JSONObject(response);//Cadena de respuesta como parametro

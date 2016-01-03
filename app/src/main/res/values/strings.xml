@@ -4,10 +4,14 @@
 
     <string-array name="municipios_arrays">
 
-        <item>Ruta Azul</item>
-        <item>Ruta Amarilla</item>
-        <item>Ruta Verde</item>
-        <item>Ruta Roja</item>
-        <item>Ruta Cafe</item>
+        <item>Ruta 619A</item>
+        <item>Ruta 619</item>
+        <item>Ruta 69</item>
+        <item>Ruta 380</item>
+        <item>Ruta 625</item>
+        <item>Ruta 90</item>
+        <item>Ruta 709</item>
+
+
     </string-array>
 </resources>
