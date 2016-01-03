@@ -20,7 +20,7 @@ import hackro.com.att.R;
  */
 public class utils {
 
-    public void DownloadImageFromPath(String path){
+    public Bitmap DownloadImageFromPath(String path){
         InputStream in =null;
         Bitmap bmp=null;
        // ImageView iv = (ImageView)findViewById(R.id.img1);
@@ -46,6 +46,8 @@ public class utils {
         catch(Exception ex){
             Log.e("Exception",ex.toString());
         }
+
+        return  bmp;
     }
 
     //Metodo para almacenar una imagen en una ruta determinada

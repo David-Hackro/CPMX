@@ -28,6 +28,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
 
+import hackro.com.att.Activities.Map;
 import hackro.com.att.Activities.MenuApp;
 
 
@@ -70,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                                     String email = object.getString("email");//Obtenemos el mail
 
                                     //Envio de valores al Activity 2
-                                    Intent i = new Intent(getApplicationContext(), MenuApp.class);//Enviamos al usuario a otro activity
+                                    Intent i = new Intent(getApplicationContext(), Map.class);//Enviamos al usuario a otro activity
                                     i.putExtra("foto",imgUrl.toString());
                                     i.putExtra("usuario",name);
                                     i.putExtra("email",email);
